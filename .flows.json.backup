@@ -44,7 +44,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!DOCTYPE html>\n<html lang=\"tr\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Yapılacaklar Listesi</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"/font/bootstrap-icons.min.css\">\n</head>\n\n<body>\n    <div class=\"container mt-5\">\n        <div class=\"row\">\n            <div class=\"col-md-8 offset-md-2\">\n                {{#error}}\n                <div class=\"alert alert-danger\">\n                    <h4>{{message}}</h4>\n                </div>\n                {{/error}}\n\n                <form action=\"/opt/add\" method=\"POST\">\n                    <div class=\"input-group input-group-lg\">\n                        <input required type=\"text\" name=\"name\" class=\"form-control {{#error}} border-danger {{/error}}\" placeholder=\"Yoğurt al, ekmek al...\">\n                        <button class=\"btn btn-outline-secondary\" type=\"reset\">Temizle</button>\n                        <button class=\"btn btn-primary px-5\" type=\"submit\">Ekle</button>\n                    </div>\n                </form>\n                <div class=\"card mt-2 overflow-hidden\">\n                    <div class=\"card-body p-0\">\n                        <div class=\"table-responsive\">\n                            <table class=\"table table-hover mb-0\">\n                                <thead class=\"table-dark\">\n                                    <tr>\n                                        <th colspan=\"2\">\n                                            İş\n                                        </th>\n                                <tbody>\n                                    {{#payload}}\n                                    <tr valign=\"middle\">\n                                        <td>\n                                            {{#done}}\n                                            <h4 class=\"text-muted\"><del>{{name}}</del></h4>\n                                            {{/done}}\n                                            {{^done}}\n                                            <h4>{{name}}</h4>\n                                            {{/done}}\n                                            <h4 class=\"badge bg-secondary\"><small> <i class=\"bi bi-calendar\"></i> {{date}} {{time}}</h4>\n                                        </td>\n                                        <td align=\"right\">\n                                            <div class=\"btn-group\">\n                                                <form method=\"POST\">\n                                                    <input type=\"hidden\" name=\"id\" value=\"{{id}}\"/>\n                                                    {{#done}}\n                                                    <button data-bs-toggle=\"tooltip\" data-bs-title=\"Aç\" type=\"submit\" formaction=\"/opt/open\" class=\"btn btn-warning\"><i class=\"bi bi-arrow-clockwise\"></i></button>\n                                                    {{/done}}\n                                                    {{^done}}\n                                                    <a data-bs-toggle=\"tooltip\" data-bs-title=\"Düzenle\" href=\"/edit/{{id}}\" class=\"btn btn-info\"><i class=\"bi bi-pencil\"></i></a>\n                                                    <a data-bs-toggle=\"tooltip\" data-bs-title=\"Hatırlatıcı\" href=\"/schedule/{{id}}\" class=\"btn btn-secondary\"><i class=\"bi bi-alarm\"></i></a>\n                                                    <button data-bs-toggle=\"tooltip\" data-bs-title=\"Tamamla\" type=\"submit\" formaction=\"/opt/complete\" class=\"btn btn-success\"><i class=\"bi bi-check-lg\"></i></button>\n                                                    {{/done}}\n                                                    <button data-bs-toggle=\"tooltip\" data-bs-title=\"Sil\" type=\"submit\" formaction=\"/opt/trash\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></button>\n                                                </form>\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    {{/payload}}\n                                    {{^payload}}\n                                    <tr>\n                                        <td colspan=\"2\" class=\"text-muted\">Henüz hiç giriş yapılmadı...</td>\n                                    </tr>\n                                </tbody>\n                                </tr>\n                                {{/payload}}\n                                </thead>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n        <script src=\"/js/bootstrap.bundle.min.js\"></script>\n        <script>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'))\n        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {\n        return new bootstrap.Tooltip(tooltipTriggerEl)\n        })</script>\n</body>\n\n</html>",
+        "template": "<!DOCTYPE html>\n<html lang=\"tr\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Yapılacaklar Listesi</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"/font/bootstrap-icons.min.css\">\n</head>\n\n<body>\n    <div class=\"container mt-5\">\n        <div class=\"row\">\n            <div class=\"col-md-8 offset-md-2\">\n                {{#error}}\n                <div class=\"alert alert-danger\">\n                    <h4>{{message}}</h4>\n                </div>\n                {{/error}}\n\n                <form action=\"/opt/add\" method=\"POST\">\n                    <div class=\"input-group input-group-lg\">\n                        <input required type=\"text\" name=\"name\" class=\"form-control {{#error}} border-danger {{/error}}\" placeholder=\"Yoğurt al, ekmek al...\">\n                        <button class=\"btn btn-outline-secondary\" type=\"reset\">Temizle</button>\n                        <button class=\"btn btn-primary px-5\" type=\"submit\">Ekle</button>\n                    </div>\n                </form>\n                <div class=\"card mt-2 overflow-hidden\">\n                    <div class=\"card-body p-0\">\n                        <div class=\"table-responsive\">\n                            <table class=\"table table-hover mb-0\">\n                                <thead class=\"table-dark\">\n                                    <tr>\n                                        <th colspan=\"2\">\n                                            İş\n                                        </th>\n                                <tbody>\n                                    {{#payload}}\n                                    <tr valign=\"middle\">\n                                        <td>\n                                            {{#done}}\n                                            <h4 class=\"text-muted\"><del>{{name}}</del></h4>\n                                            {{/done}}\n                                            {{^done}}\n                                            <h4>{{name}}</h4>\n                                            {{/done}}\n                                            <h4 class=\"badge bg-secondary\"><small> <i class=\"bi bi-calendar\"></i> {{date}} {{time}}</h4>\n                                        </td>\n                                        <td align=\"right\">\n                                            <div class=\"btn-group\">\n                                                <form method=\"POST\">\n                                                    <input type=\"hidden\" name=\"id\" value=\"{{id}}\"/>\n                                                    {{#done}}\n                                                    <button data-bs-toggle=\"tooltip\" data-bs-title=\"Aç\" type=\"submit\" formaction=\"/opt/open\" class=\"btn btn-warning\"><i class=\"bi bi-arrow-clockwise\"></i></button>\n                                                    {{/done}}\n                                                    {{^done}}\n                                                    <a data-bs-toggle=\"tooltip\" data-bs-title=\"Düzenle\" href=\"/edit/{{id}}\" class=\"btn btn-info\"><i class=\"bi bi-pencil\"></i></a>\n                                                    <a data-bs-toggle=\"tooltip\" data-bs-title=\"Hatırlatıcı\" href=\"/schedule/{{id}}\" class=\"btn btn-secondary\"><i class=\"bi bi-alarm\"></i></a>\n                                                    <button data-bs-toggle=\"tooltip\" data-bs-title=\"Tamamla\" type=\"submit\" formaction=\"/opt/complete\" class=\"btn btn-success\"><i class=\"bi bi-check-lg\"></i></button>\n                                                    {{/done}}\n                                                    <button data-bs-toggle=\"tooltip\" data-bs-title=\"Sil\" type=\"submit\" formaction=\"/opt/trash\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></button>\n                                                </form>\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    {{/payload}}\n                                    {{^payload}}\n                                    <tr>\n                                        <td colspan=\"2\" class=\"text-muted\">Henüz hiç giriş yapılmadı...</td>\n                                    </tr>\n                                </tbody>\n                                </tr>\n                                {{/payload}}\n                                </thead>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n        <div class=\"position-relative\">\n            <a href=\"/user-list\" class=\"btn btn-danger btn-lg position-fixed bottom-0 end-0 m-5 shadow\"><i class=\"bi bi-person-fill\"></i></a>\n        </div>\n        <script src=\"/js/bootstrap.bundle.min.js\"></script>\n        <script>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'))\n        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {\n        return new bootstrap.Tooltip(tooltipTriggerEl)\n        })</script>\n</body>\n\n</html>",
         "output": "str",
         "x": 580,
         "y": 460,
@@ -59,11 +59,11 @@
         "type": "function",
         "z": "205ea1bbd9a0c513",
         "name": "DB",
-        "func": "// Flush DB\n\nglobal.set(\"DB\",{\n    todo : []\n})",
+        "func": "// Flush DB\n\nglobal.set(\"DB\",{\n    todo : [],\n    user:[]\n})",
         "outputs": 0,
         "timeout": 0,
         "noerr": 0,
-        "initialize": "// Code added here will be run once\n// whenever the node is started.\n\n\n/*\n*TODO DB Şema\n*id:NOW\n*name:\"\"\n*done: true|false\n*stamp:{\n     createdAt: NOW,\n     ip: IP,\n     user:\"\"\n     email:\"\"\n     date:\"GG.AA.YYYY\"\n     time:\"SS:DD:NN\"\n}\n**/\n\n\n\nconst DB = global.get(\"DB\") || {\n     todo: [] }\nglobal.set(\"DB\", DB);",
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\n\n\n/*\n*TODO DB Şema\n*id:NOW\n*name:\"\"\n*done: true|false\n*stamp:{\n     createdAt: NOW,\n     ip: IP,\n     user:\"\"\n     email:\"\"\n     date:\"GG.AA.YYYY\"\n     time:\"SS:DD:NN\"\n}\n**/\n\n/*\n *USER DB Şema\n *id:NOW\n *displayName:\"\"\n *active: true|false\n username:\"\"\n password: \"HASH\"\n *stamp:{\n  createdAt: NOW,\n  ip: IP,\n  user:\"\"\n  email:\"\"\n   }\n *date:\"GG.AA.YYYY\"\n *time:\"SS:DD:NN\"\n**/\n\n\n\nconst DB = global.get(\"DB\") || {\n     todo: [],\n     user: []\n}\nglobal.set(\"DB\", DB);",
         "finalize": "",
         "libs": [],
         "x": 450,
@@ -128,7 +128,10 @@
             "afd9e96e7e0fb9c3",
             "afa7227acff9d632",
             "d0e0be5e323544ae",
-            "f3b1cfb1f2f3f6dc"
+            "f3b1cfb1f2f3f6dc",
+            "196c8259f5333a17",
+            "5f151cd45254f14f",
+            "7b49c3f02822cd08"
         ],
         "x": 275,
         "y": 380,
@@ -220,7 +223,8 @@
         "name": "link out 8",
         "mode": "link",
         "links": [
-            "4bb4f0ec40ae5292"
+            "4bb4f0ec40ae5292",
+            "e0fb670d8997100f"
         ],
         "x": 635,
         "y": 980,
@@ -246,7 +250,8 @@
         "name": "link out 9",
         "mode": "link",
         "links": [
-            "4bb4f0ec40ae5292"
+            "4bb4f0ec40ae5292",
+            "e0fb670d8997100f"
         ],
         "x": 1195,
         "y": 880,
@@ -322,7 +327,8 @@
         "name": "link out 10",
         "mode": "link",
         "links": [
-            "4bb4f0ec40ae5292"
+            "4bb4f0ec40ae5292",
+            "e0fb670d8997100f"
         ],
         "x": 675,
         "y": 620,
@@ -409,7 +415,8 @@
         "name": "link out 11",
         "mode": "link",
         "links": [
-            "4bb4f0ec40ae5292"
+            "4bb4f0ec40ae5292",
+            "e0fb670d8997100f"
         ],
         "x": 675,
         "y": 780,
@@ -432,8 +439,8 @@
         "z": "205ea1bbd9a0c513",
         "name": "eposta gönder",
         "info": "",
-        "x": 1110,
-        "y": 920,
+        "x": 1050,
+        "y": 940,
         "wires": []
     },
     {
@@ -544,25 +551,310 @@
         "x": 880,
         "y": 940,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ab499d6e0c4e056e",
+        "type": "http in",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "url": "/user-list",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 1120,
+        "wires": [
             [
-                "9835879360443bd2"
+                "05428daab867c215"
             ]
         ]
     },
     {
-        "id": "9835879360443bd2",
-        "type": "debug",
+        "id": "11567ad04470d461",
+        "type": "http response",
         "z": "205ea1bbd9a0c513",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1060,
-        "y": 1000,
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "b5e404cf018dc328",
+        "type": "template",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"tr\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Kullanıcı Listesi</title>\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"/font/bootstrap-icons.min.css\">\n</head>\n\n<body>\n    <div class=\"container mt-5\">\n        <div class=\"row\">\n            <div class=\"col-md-8 offset-md-2\">\n                {{#error}}\n                <div class=\"alert alert-danger\">\n                    <h4>{{message}}</h4>\n                </div>\n                {{/error}}\n\n                <form action=\"/user-opt/add\" method=\"POST\">\n                    <div class=\"input-group input-group-lg\">\n                        <input required type=\"text\" name=\"username\" value=\"{{error.formData.username}}\" class=\"form-control {{#error}} border-danger {{/error}}\" placeholder=\"Kullanıcı Adı...\">\n                        <input required type=\"password\" name=\"password\" value=\"{{error.formData.password}}\" class=\"form-control {{#error}} border-danger {{/error}}\" placeholder=\"Parola...\">\n                        <button class=\"btn btn-outline-secondary\" type=\"reset\">Temizle</button>\n                        <button class=\"btn btn-primary px-5\" type=\"submit\">Ekle</button>\n                    </div>\n                </form>\n                <div class=\"card mt-2 overflow-hidden\">\n                    <div class=\"card-body p-0\">\n                        <div class=\"table-responsive\">\n                            <table class=\"table table-hover mb-0\">\n                                <thead class=\"table-dark\">\n                                    <tr>\n                                        <th colspan=\"2\">\n                                            Kullanıcı Adı\n                                        </th>\n\n                                <tbody>\n                                    {{#payload}}\n                                    <tr valign=\"middle\">\n                                        <td>\n                                            {{#active}}\n                                            <h4>{{username}}</h4>\n                                            {{/active}}\n                                            {{^active}}\n                                            <h4 class=\"text-muted\"><del>{{username}}</del></h4>\n                                            {{/active}}\n                                            <h4 class=\"badge bg-secondary\"><small> <i class=\"bi bi-calendar\"></i> {{date}} {{time}}</h4>\n                                        </td>\n                                        <td align=\"right\">\n                                            <div class=\"btn-group\">\n                                                    <input type=\"hidden\" name=\"id\" value=\"{{id}}\"/>\n                                                    <a data-bs-toggle=\"tooltip\" data-bs-title=\"Düzenle\" href=\"/user-edit/{{id}}\" class=\"btn btn-info\"><i class=\"bi bi-pencil\"></i></a>\n                                            </div>\n                                        </td>\n                                    </tr>\n                                    {{/payload}}\n                                    {{^payload}}\n                                    <tr>\n                                        <td colspan=\"2\" class=\"text-muted\">Henüz hiç kullancı tanımlanmadı...</td>\n                                    </tr>\n                                </tbody>\n                                </tr>\n                                {{/payload}}\n                                </thead>\n                            </table>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n        <div class=\"position-relative\">\n            <a href=\"/\"\n                class=\"btn btn-warning btn-lg position-fixed bottom-0 end-0 m-5 shadow\"><i class=\"bi bi-card-checklist\"></i></i></a>\n        </div>\n        <script src=\"/js/bootstrap.bundle.min.js\"></script>\n        <script>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'))\n        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {\n        return new bootstrap.Tooltip(tooltipTriggerEl)\n        })</script>\n</body>\n\n</html>",
+        "output": "str",
+        "x": 660,
+        "y": 1120,
+        "wires": [
+            [
+                "11567ad04470d461"
+            ]
+        ]
+    },
+    {
+        "id": "05428daab867c215",
+        "type": "function",
+        "z": "205ea1bbd9a0c513",
+        "name": "db.user.find()",
+        "func": "const DB = global.get(\"DB\")\n\nmsg.payload = DB.user\n\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 1120,
+        "wires": [
+            [
+                "b5e404cf018dc328"
+            ]
+        ]
+    },
+    {
+        "id": "c2ca2b73f469a3b8",
+        "type": "http in",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "url": "/user-opt/:type",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 1280,
+        "wires": [
+            [
+                "1295569966f8fe27"
+            ]
+        ]
+    },
+    {
+        "id": "1295569966f8fe27",
+        "type": "function",
+        "z": "205ea1bbd9a0c513",
+        "name": "validation",
+        "func": "const typeLookup = {\n    add: {\n        text: \"Eklemek\",\n        requireArgs: [\"username\", \"password\"]\n    },\n    update: {\n        text: \"Güncellemek\",\n        requireArgs: [\"id\", \"name\", \"passwprd\"]\n    }\n}\nif (!Object.keys(typeLookup).includes(msg.req.params.type)) {\n\n    msg.error = {\n        message: '${msg.req.params.type} geçersiz bir parametre değeridir.',\n        formData: msg.payload\n\n    }\n    return [null, msg]\n}\n\nif (!typeLookup[msg.req.params.type].requireArgs.every(arg => msg.payload[arg])) {\n\n    msg.error = {\n        message: '${typeLookup[msg.req.params.type].text} istediğiniz elemanın ${typeLookup[msg.req.params.type].requireArg} bilgisi(leri) olmalı.',\n        formData: msg.payload\n    }\n    return [null, msg]\n}\n\nreturn msg; ",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1280,
+        "wires": [
+            [
+                "f6d32678aa4b1fc0"
+            ],
+            [
+                "2783769cae6e4444"
+            ]
+        ],
+        "outputLabels": [
+            "Valid",
+            "Invalid"
+        ]
+    },
+    {
+        "id": "250991c5b6a78d62",
+        "type": "function",
+        "z": "205ea1bbd9a0c513",
+        "name": "db.user.opt()",
+        "func": "const DB = global.get(\"DB\")\n\nlet user = DB.user\nconst date = new Date()\nconst now = date.getTime()\n\nif (msg.req.params.type === \"add\") {\n\n    user.push({\n        id: now,\n        active: true,\n        stamp: {\n            createdAt: now,\n            ip: msg.req.ip,\n            user: \"\",\n            email: \"\",\n        },\n        date: date.toLocaleDateString(\"TR\"), //DD.AA.YYYY\n        time: date.toLocaleTimeString(\"TR\"), //SS:DD:NN\n        ...msg.payload\n    })\n}\nelse {\n    const index = user.findIndex(x => x.id == msg.payload.id)\n\n    if (!~index) {\n\n        msg.error = {\n            message: \"id ile eşleşen bir kayıt bulunamadı.\"\n        }\n        return [null, msg]\n    }\n\n    user[index] = { ...user[index], ...msg.payload };\n\n    user[index].stamp = {\n        createdAt: now,\n        ip: msg.req.ip,\n        user: \"\",\n        email: \"\",\n    }\n\n    user[index].date = date.toLocaleDateString(\"TR\") //DD.AA.YYYY\n    user[index].time = date.toLocaleTimeString(\"TR\") //SS:DD:NN\n\n}\n\nDB.user = user\nglobal.set(\"DB\", DB)\n\nreturn msg\n\n\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 832.0000686645508,
+        "y": 1283.9999656677246,
+        "wires": [
+            [
+                "8adb2032fd47ce7b"
+            ],
+            [
+                "1bb556955a98f23e"
+            ]
+        ],
+        "outputLabels": [
+            "Suc",
+            "Err"
+        ]
+    },
+    {
+        "id": "8adb2032fd47ce7b",
+        "type": "http response",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "statusCode": "302",
+        "headers": {
+            "location": "/user-list"
+        },
+        "x": 1002.0000686645508,
+        "y": 1243.9999656677246,
+        "wires": []
+    },
+    {
+        "id": "f7b3875eac2972f6",
+        "type": "link in",
+        "z": "205ea1bbd9a0c513",
+        "name": "link in 3",
+        "links": [
+            "2783769cae6e4444",
+            "1bb556955a98f23e",
+            "df15b8482adb0af7"
+        ],
+        "x": 305,
+        "y": 1060,
+        "wires": [
+            [
+                "05428daab867c215"
+            ]
+        ]
+    },
+    {
+        "id": "2783769cae6e4444",
+        "type": "link out",
+        "z": "205ea1bbd9a0c513",
+        "name": "link out 14",
+        "mode": "link",
+        "links": [
+            "f7b3875eac2972f6"
+        ],
+        "x": 635,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "1bb556955a98f23e",
+        "type": "link out",
+        "z": "205ea1bbd9a0c513",
+        "name": "link out 15",
+        "mode": "link",
+        "links": [
+            "f7b3875eac2972f6"
+        ],
+        "x": 967.0000686645508,
+        "y": 1303.9999656677246,
+        "wires": []
+    },
+    {
+        "id": "f6d32678aa4b1fc0",
+        "type": "bcrypt",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "action": "encrypt",
+        "field": "payload.password",
+        "hash": "payload",
+        "target": "payload.password",
+        "assignment": "assign",
+        "match": "match",
+        "outputs": 1,
+        "rounds": 10,
+        "x": 670,
+        "y": 1260,
+        "wires": [
+            [
+                "250991c5b6a78d62"
+            ]
+        ]
+    },
+    {
+        "id": "e2b23ed642dc7746",
+        "type": "http in",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "url": "/user-edit/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 1480,
+        "wires": [
+            [
+                "be0913e5de34e9c6"
+            ]
+        ]
+    },
+    {
+        "id": "be0913e5de34e9c6",
+        "type": "function",
+        "z": "205ea1bbd9a0c513",
+        "name": "db.user.findOne()",
+        "func": "const DB = global.get(\"DB\")\n\nmsg.payload = DB.user.find(x => x.id == msg.req.params.id)\n\nif (!msg.payload) {\n    msg.error = {\n        message: \"id ile eşleşen bir kayıt bulunamadı.\"\n    }\n    return [null, msg]\n}\n\nif (msg.payload.done) {\n\n    msg.error = {\n        message: \"Tamamlanan işler güncellenemez\"\n    }\n    return [null, msg]\n}\n\nreturn msg; ",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 1480,
+        "wires": [
+            [
+                "4c2fe1dbfaa50b01"
+            ],
+            [
+                "df15b8482adb0af7"
+            ]
+        ],
+        "outputLabels": [
+            "Succ",
+            "Err"
+        ]
+    },
+    {
+        "id": "4c2fe1dbfaa50b01",
+        "type": "template",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"tr\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n    <title>Kullanıcı Listesi</title>\n\n    <link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"/font/bootstrap-icons.min.css\">\n</head>\n\n<body>\n    <div class=\"container mt-5\">\n        <div class=\"row\">\n            <div class=\"col-md-8 offset-md-2\">\n                {{#error}}\n                <div class=\"alert alert-danger\">\n                    <h4>{{message}}</h4>\n                </div>\n                {{/error}}\n\n                <form action=\"/user-opt/update\" method=\"POST\">\n                    <input type=\"hidden\" name=\"id\" value=\"{{payload.id}}\"/>\n                    <div class=\"mb-3\">\n                        <label for=\"username\" class=\"form-label\">Kullanıcı Adı</label>\n                        <input readonly type=\"text\" name=\"username\" value=\"{{payload.username}}\" class=\"form-control  form-control-lg {{#error}} border-danger {{/error}}{{^error}} border-info {{/error}}\" placeholder=\"Kullanıcı Adı...\">\n                    </div>\n\n                    <div class=\"mb-3\">\n                        <label for=\"displayName\" class=\"form-label\">İsim Soyisim</label>\n                        <input required type=\"text\" name=\"displayName\" value=\"{{payload.displayName}}\" class=\"form-control  form-control-lg {{#error}} border-danger {{/error}}{{^error}} border-info {{/error}}\" placeholder=\"İsim Soyisim...\">\n                    </div>\n\n                    <div class=\"mb-3\">\n                        <label for=\"password\" class=\"form-label\">Parola</label>\n                        <input required type=\"password\" name=\"password\" class=\"form-control  form-control-lg {{#error}} border-danger {{/error}}{{^error}} border-info {{/error}}\" placeholder=\"Parola...\">\n                    </div>\n\n                    <div class=\"mb-3\">\n                        <div class=\"form-check\">\n                            <input class=\"form-check-input\" type=\"radio\" name=\"status\" id=\"flexRadioDefault1\">\n                            <label class=\"form-check-label\" for=\"status\" value:\"true\">\n                                                Aktif\n                                                </label>\n                        </div>\n                        <div class=\"form-check\">\n                            <input class=\"form-check-input\" type=\"radio\" name=\"status\" id=\"flexRadioDefault1\">\n                            <label class=\"form-check-label\" for=\"status\" value:\"false\">\n                                                 Pasif                                             \n                                                </label>\n                        </div>\n                    </div>\n\n\n\n                    <div class=\"mb-3 float-end\">\n                        <a class=\"btn btn-warning\" href=\"/\">Vazgeç</a>\n                        <button class=\"btn btn-outline-secondary\" type=\"reset\">Temizle</button>\n                        <button class=\"btn btn-success px-5\" type=\"submit\">Güncelle</button>\n                    </div>\n\n                </form>\n            </div>\n        </div>\n        <script src=\"/js/bootstrap.bundle.min.js\"></script>\n        <script>\n            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle=\"tooltip\"]'))\n        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {\n        return new bootstrap.Tooltip(tooltipTriggerEl)\n        })\n        </script>\n</body>\n\n</html>",
+        "output": "str",
+        "x": 720,
+        "y": 1440,
+        "wires": [
+            [
+                "0af5ee81f4fa0490"
+            ]
+        ]
+    },
+    {
+        "id": "0af5ee81f4fa0490",
+        "type": "http response",
+        "z": "205ea1bbd9a0c513",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "df15b8482adb0af7",
+        "type": "link out",
+        "z": "205ea1bbd9a0c513",
+        "name": "link out 16",
+        "mode": "link",
+        "links": [
+            "f7b3875eac2972f6"
+        ],
+        "x": 675,
+        "y": 1520,
         "wires": []
     }
 ]

@@ -426,5 +426,24 @@
                 "file": "C:\\Users\\berka\\OneDrive\\Masaüstü\\ToDo\\node_modules\\@node-red\\nodes\\core\\storage\\23-watch.js"
             }
         }
+    },
+    "@buglss/node-red-crontinject": {
+        "name": "@buglss/node-red-crontinject",
+        "version": "3.0.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "crontinject": {
+                "name": "crontinject",
+                "types": [
+                    "crontinject"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@buglss/node-red-crontinject",
+                "file": "C:\\Users\\berka\\OneDrive\\Masaüstü\\ToDo\\node_modules\\@buglss\\node-red-crontinject\\nodes\\crontinject.js"
+            }
+        }
     }
 }

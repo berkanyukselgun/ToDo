@@ -445,5 +445,24 @@
                 "file": "C:\\Users\\berka\\OneDrive\\Masaüstü\\ToDo\\node_modules\\@buglss\\node-red-crontinject\\nodes\\crontinject.js"
             }
         }
+    },
+    "node-red-contrib-bcrypt": {
+        "name": "node-red-contrib-bcrypt",
+        "version": "0.1.6",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "bcrypt": {
+                "name": "bcrypt",
+                "types": [
+                    "bcrypt"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-bcrypt",
+                "file": "C:\\Users\\berka\\OneDrive\\Masaüstü\\ToDo\\node_modules\\node-red-contrib-bcrypt\\bcrypt\\bcrypt.js"
+            }
+        }
     }
 }
